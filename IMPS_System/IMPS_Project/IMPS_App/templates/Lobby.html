@@ -9,28 +9,27 @@
   <title>Welcome to IETI Marikina</title>
 </head>
 <body>
-  <header>
-      <nav>
-        <ul>
-          <li><a href="Login.html"> Login</li>
-          <li><a href="Registration.html">Sign Up</li>
-        </ul>  
-      </nav>
-  </header>
-  <main>
-  </main>
-  <footer>
-  </footer>
-  <script src="scripts.js"></script>
+  <div class="container">
+    <header>
+        <nav>
+          <ul>
+            <li><a href="Login.html"> Login</li>
+            <li><a href="Registration.html">Sign Up</li>
+          </ul>  
+        </nav>
+    </header>
+    <main>
+      <a href="default.asp">
+        <img src="{% static 'Images/1stFloorBase.png' %}" alt="1stFloor">
+      </a>
+    </main>
+    <footer>
+    </footer>
+  
 </body>
 
-<script>
-  window.addEventListener("blur", () => {
-    document.title = "Idle";
-  });
+<script src="{% static 'js/script.js' %}"></script>
 
-  window.addEventListener("focus", () => {
-    document.title = "Welcome To IETI Marikina!"
-  });
+
 </script>
 </html>
