@@ -1,17 +1,19 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="styles.css">
-  <title>Welcome to IETI</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+  <title>Welcome to IETI Marikina</title>
 </head>
 <body>
   <header>
       <nav>
         <ul>
-          <li><a href="login.html"> Login</li>
-          <li>Sign Up</li>
+          <li><a href="Login.html"> Login</li>
+          <li><a href="Registration.html">Sign Up</li>
         </ul>  
       </nav>
   </header>
@@ -21,4 +23,14 @@
   </footer>
   <script src="scripts.js"></script>
 </body>
+
+<script>
+  window.addEventListener("blur", () => {
+    document.title = "Idle";
+  });
+
+  window.addEventListener("focus", () => {
+    document.title = "Welcome To IETI Marikina!"
+  });
+</script>
 </html>

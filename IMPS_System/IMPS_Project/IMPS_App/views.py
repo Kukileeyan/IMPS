@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate, login, logout
 from .forms import UserRegistrationForm
 from django.contrib.auth.forms import AuthenticationForm
 
-#Register
+# Register
 def register(request):
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
@@ -17,7 +17,7 @@ def register(request):
         form = UserRegistrationForm()
         return render(request, 'register.html', {'form': form})
 
-#Login
+# Login
 def login_view(request):
     if request.method == 'POST':
         form = AuthenticationForm(request, data=request.POST)
@@ -27,7 +27,16 @@ def login_view(request):
             user = authenticate(request, username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('dashboard')
+
+                # Redirect based on user level
+                user_level = getattr(user.profile, 'user_level', None)  # Safely access user_level
+                if user_level == 'admin':
+                    return redirect('admin_dashboard')
+                elif user_level == 'student':
+                    return redirect('student_dashboard')
+                else:
+                    return redirect('lobby')  # Default redirect
+
             else:
                 return render(request, 'login.html', {'form': form})
         else:
@@ -36,20 +45,20 @@ def login_view(request):
         form = AuthenticationForm()
         return render(request, 'login.html', {'form': form})
 
-#Logout
+# Logout
 def logout_view(request):
     logout(request)
     return redirect('login')
-    
-# Example view with user level check
-@login_required  # Ensures only logged-in users can access this view
-def dashboard_view(request):
+
+@login_required
+def admin_dashboard_view(request):
     if request.user.profile.user_level == 'admin':
-        # Code for admin users
-        return render(request, 'admin_dashboard.html')
-    elif request.user.profile.user_level == 'student':
-        # Code for student users
-        return render(request, 'student_dashboard.html')
-    else:
-        # Handle guests or other user levels
-        return render(request, 'guest_dashboard.html')
+        return redirect('admin_dashboard')      
+
+def student_dashboard_view(request):
+    if request.user.profile.user_level == 'student':
+        return redirect('student_dashboard')
+
+def Lobby_view(request):
+    return render(request, 'Lobby.html')
+
