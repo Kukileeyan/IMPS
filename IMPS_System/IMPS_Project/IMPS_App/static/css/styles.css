@@ -14,18 +14,39 @@ body {
     background-color: #131313;
 }
 
-img {
-    display: flex;
-    /*
-    PADDING = 10px x 8 = 80px
-    BORDER = 2px x 8 = 16px
-    gap = 20px x 1 = 20px
-    80px + 16px + 10px = 116px
-    960 - 116px = 844px
-    844px / 2 = 422px
-    */
-    min-width: 100px;
-    max-height: 2em;
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0px;
+  overflow: hidden;
+  background: linear-gradient(to left, #000000, #006e44);
+  z-index: 10;
+}
+
+li {
+  float: right;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+
+li a h3 {
+  display: block;
+  float: left;
+}
+
+li a:hover {
+  background-color: #111;
 }
 
 
+img {
+  display: block;
+  max-width: 100%;
+  max-height: auto;
+}
