@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+  <title>Welcome to IETI Marikina</title>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+        <nav>
+          <ul>
+            <li><a href="#home">Login</a></li>
+            <li><a href="#news">Sign Up</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li style="float:left"><a class="active" href="#about">IETI: College of Science and Technology</a></li>
+          </ul>  
+        </nav>
+    </header>
+    <main>
+      <a href="default.asp">
+        <img src="{% static 'Images/1stFloorBase.png' %}" alt="1stFloor">
+      </a>
+    </main>
+    <footer>
+    </footer>
+  
+</body>
+
+<script src="{% static 'js/script.js' %}"></script>
+
+
+</script>
+</html>
